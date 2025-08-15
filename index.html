@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual do Estudante - IFG</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(255,255,255,0.1) 10px,
+                rgba(255,255,255,0.1) 20px
+            );
+            animation: slide 20s linear infinite;
+        }
+
+        @keyframes slide {
+            0% { transform: translateX(-50px) translateY(-50px); }
+            100% { transform: translateX(0) translateY(0); }
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header .subtitle {
+            font-size: 1.2rem;
+            font-weight: 300;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .page {
+            padding: 2rem;
+            min-height: 500px;
+            display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .chapter-title {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .chapter-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 5px;
+            height: 40px;
+            background: linear-gradient(135deg, #FF6B6B, #4ECDC4);
+            border-radius: 3px;
+        }
+
+        .intro-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            background: #f8f9ff;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #4ECDC4;
+            margin-bottom: 2rem;
+        }
+
+        .objective-box {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            margin: 2rem 0;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .objective-box h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .rights-grid, .responsibilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border: 1px solid #e3f2fd;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #FF6B6B, #4ECDC4, #45B7D1, #96CEB4);
+        }
+
+        .card h4 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .card li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: #555;
+        }
+
+        .card li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #4ECDC4;
+            font-weight: bold;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #FF6B6B, #FF5722);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.3);
+        }
+
+        .warning-box h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .prohibited-list {
+            background: #fff3f3;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-left: 4px solid #FF6B6B;
+        }
+
+        .prohibited-list h4 {
+            color: #d32f2f;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .prohibited-list ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .prohibited-list li {
+            padding: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: #666;
+            border-bottom: 1px solid #ffebee;
+        }
+
+        .prohibited-list li:last-child {
+            border-bottom: none;
+        }
+
+        .prohibited-list li::before {
+            content: '⚠️';
+            position: absolute;
+            left: 0;
+            top: 0.8rem;
+        }
+
+        .penalties-section {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 2px solid #e9ecef;
+        }
+
+        .penalty-item {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-left: 5px solid #FF6B6B;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .penalty-number {
+            background: #FF6B6B;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 1rem;
+        }
+
+        .process-steps {
+            background: #e8f5e8;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            margin: 1rem 0;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .step-number {
+            background: linear-gradient(135deg, #4ECDC4, #44A08D);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: #f8f9fa;
+            border-top: 1px solid #dee2e6;
+        }
+
+        .nav-button {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .nav-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .page-indicator {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #dee2e6;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: #667eea;
+            transform: scale(1.2);
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #a8e6cf 0%, #dcedc1 100%);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        .important-note {
+            background: #fff8e1;
+            border: 1px solid #ffcc02;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            position: relative;
+        }
+
+        .important-note::before {
+            content: '💡';
+            position: absolute;
+            top: -10px;
+            left: 15px;
+            background: #fff8e1;
+            padding: 0 5px;
+        }
+
+        .final-section {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            border-radius: 12px;
+            margin: 2rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 10px;
+            }
+            
+            .header {
+                padding: 1.5rem;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .page {
+                padding: 1.5rem;
+            }
+            
+            .rights-grid, .responsibilities-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .navigation {
+                padding: 1rem;
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📚 Manual do Estudante</h1>
+            <div class="subtitle">Instituto Federal de Goiás - IFG</div>
+        </div>
+
+        <!-- Página 1: Introdução e Objetivos -->
+        <div class="page active" id="page1">
+            <div class="chapter-title">Bem-vindo ao IFG! 🎓</div>
+            <div class="intro-text">
+                <strong>Ei, estudante!</strong> Este manual foi feito especialmente para você que faz parte da família IFG. 
+                Aqui você vai descobrir seus <span class="highlight">direitos</span>, entender suas <span class="highlight">responsabilidades</span> 
+                e saber exatamente o que pode acontecer se algo sair do planejado. 
+                <br><br>
+                Não se preocupe - vamos explicar tudo de um jeito fácil e direto, sem complicação! 😊
+            </div>
+
+            <div class="objective-box">
+                <h3>🎯 Capítulo I - Nossos Objetivos</h3>
+                <p>O IFG tem uma missão super importante: garantir que todos os alunos tenham acesso a uma educação pública, gratuita e de qualidade. Queremos que você saiba exatamente quais são seus direitos e deveres para que sua jornada aqui seja tranquila e cheia de aprendizado!</p>
+            </div>
+
+            <div class="important-note">
+                <strong>Por que este manual é importante?</strong><br>
+                Conhecendo as regras, você evita problemas e aproveita melhor todas as oportunidades que o IFG oferece. É como ter um mapa para não se perder na jornada! 🗺️
+            </div>
+
+        <!-- Navegação entre páginas -->
+        <div class="navigation">
+            <button class="nav-button" id="prevBtn" onclick="changePage(-1)">
+                ← Anterior
+            </button>
+            
+            <div class="page-indicator">
+                <span class="dot active" onclick="currentPage(1)"></span>
+                <span class="dot" onclick="currentPage(2)"></span>
+                <span class="dot" onclick="currentPage(3)"></span>
+                <span class="dot" onclick="currentPage(4)"></span>
+                <span class="dot" onclick="currentPage(5)"></span>
+                <span class="dot" onclick="currentPage(6)"></span>
+                <span class="dot" onclick="currentPage(7)"></span>
+            </div>
+            
+            <button class="nav-button" id="nextBtn" onclick="changePage(1)">
+                Próxima →
+            </button>
+        </div>
+    </div>
+
+    <script>
+        let currentPageNum = 1;
+        const totalPages = 7;
+
+        function showPage(n) {
+            const pages = document.querySelectorAll('.page');
+            const dots = document.querySelectorAll('.dot');
+            
+            // Hide all pages
+            pages.forEach(page => page.classList.remove('active'));
+            
+            // Remove active class from all dots
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            // Show current page
+            document.getElementById(`page${n}`).classList.add('active');
+            
+            // Activate current dot
+            dots[n-1].classList.add('active');
+            
+            // Update navigation buttons
+            document.getElementById('prevBtn').disabled = (n === 1);
+            document.getElementById('nextBtn').disabled = (n === totalPages);
+            
+            // Update current page number
+            currentPageNum = n;
+        }
+
+        function changePage(direction) {
+            const newPage = currentPageNum + direction;
+            if (newPage >= 1 && newPage <= totalPages) {
+                showPage(newPage);
+            }
+        }
+
+        function currentPage(n) {
+            showPage(n);
+        }
+
+        // Initialize
+        showPage(1);
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'ArrowLeft') {
+                changePage(-1);
+            } else if (event.key === 'ArrowRight') {
+                changePage(1);
+            }
+        });
+
+        // Print functionality
+        function printManual() {
+            window.print();
+        }
+
+        // Add print styles
+        const printStyles = `
+            @media print {
+                body { background: white !important; }
+                .container { box-shadow: none !important; margin: 0 !important; }
+                .navigation { display: none !important; }
+                .page { display: block !important; page-break-after: always; }
+                .page:last-child { page-break-after: auto; }
+                .header { background: #4CAF50 !important; -webkit-print-color-adjust: exact; }
+                .objective-box, .warning-box, .final-section { -webkit-print-color-adjust: exact; }
+                .card::before { -webkit-print-color-adjust: exact; }
+            }
+        `;
+        
+        const styleSheet = document.createElement('style');
+        styleSheet.textContent = printStyles;
+        document.head.appendChild(styleSheet);
+    </script>
+</body>
+</html>    </div>
+
+        <!-- Página 2: Seus Direitos -->
+        <div class="page" id="page2">
+            <div class="chapter-title">Capítulo III - Seus Direitos ⚖️</div>
+            <div class="intro-text">
+                Como estudante do IFG, você tem direitos garantidos! Vamos conhecê-los:
+            </div>
+
+            <div class="rights-grid">
+                <div class="card">
+                    <h4>📖 Educação de Qualidade</h4>
+                    <ul>
+                        <li>Aulas gratuitas e bem estruturadas</li>
+                        <li>Professores qualificados</li>
+                        <li>Material didático adequado</li>
+                        <li>Laboratórios e equipamentos modernos</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h4>🤝 Igualdade e Participação</h4>
+                    <ul>
+                        <li>Participar de projetos e eventos</li>
+                        <li>Usar todos os espaços da escola</li>
+                        <li>Igualdade de oportunidades</li>
+                        <li>Livre expressão respeitosa</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h4>🆘 Apoio e Suporte</h4>
+                    <ul>
+                        <li>Ajuda de professores e coordenadores</li>
+                        <li>Apoio com material escolar</li>
+                        <li>Assistência financeira quando necessário</li>
+                        <li>Orientação pedagógica</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h4>🗣️ Voz e Defesa</h4>
+                    <ul>
+                        <li>Ser ouvido em processos acadêmicos</li>
+                        <li>Direito de defesa</li>
+                        <li>Organizar-se com outros alunos</li>
+                        <li>Participar de decisões que te afetam</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="important-note">
+                <strong>Lembre-se:</strong> Seus direitos são importantes, mas vêm acompanhados de responsabilidades. Um equilibra o outro! ⚖️
+            </div>
+        </div>
+
+        <!-- Página 3: Suas Responsabilidades -->
+        <div class="page" id="page3">
+            <div class="chapter-title">Suas Responsabilidades 📋</div>
+            <div class="intro-text">
+                Com direitos vêm responsabilidades! Veja o que esperamos de você:
+            </div>
+
+            <div class="responsibilities-grid">
+                <div class="card">
+                    <h4>⏰ Pontualidade e Presença</h4>
+                    <ul>
+                        <li>Comparecer às aulas regularmente</li>
+                        <li>Chegar no horário</li>
+                        <li>Cumprir prazos de trabalhos</li>
+                        <li>Participar das atividades</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h4>🏫 Cuidado com o Patrimônio</h4>
+                    <ul>
+                        <li>Preservar salas e laboratórios</li>
+                        <li>Cuidar de equipamentos</li>
+                        <li>Manter limpo o ambiente</li>
+                        <li>Usar materiais com responsabilidade</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h4>📄 Documentação</h4>
+                    <ul>
+                        <li>Portar identificação estudantil</li>
+                        <li>Manter dados atualizados</li>
+                        <li>Cumprir procedimentos acadêmicos</li>
+                        <li>Entregar documentos no prazo</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h4>🤝 Respeito e Convivência</h4>
+                    <ul>
+                        <li>Tratar bem colegas e professores</li>
+                        <li>Seguir regras de convivência</li>
+                        <li>Participar positivamente</li>
+                        <li>Resolver conflitos com diálogo</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="important-note">
+                <strong>Dica importante:</strong> Cumprir suas responsabilidades não é só uma obrigação - é a melhor forma de aproveitar sua experiência no IFG! 🌟
+            </div>
+        </div>
+
+        <!-- Página 4: O que é Proibido -->
+        <div class="page" id="page4">
+            <div class="chapter-title">Capítulo IV - O que é Proibido ⛔</div>
+            
+            <div class="warning-box">
+                <h3>⚠️ Atenção Especial!</h3>
+                <p>Alguns comportamentos podem causar sérios problemas para você e para toda a comunidade escolar. Vamos entender o que deve ser evitado:</p>
+            </div>
+
+            <div class="prohibited-list">
+                <h4>🚫 Comportamentos Proibidos</h4>
+                <ul>
+                    <li><strong>Trote ou Bullying:</strong> Qualquer forma de intimidação, humilhação ou violência física/psicológica</li>
+                    <li><strong>Desrespeito:</strong> Tratar mal colegas, professores ou funcionários</li>
+                    <li><strong>Substâncias Proibidas:</strong> Portar armas, drogas ou bebidas alcoólicas</li>
+                    <li><strong>Vandalismo:</strong> Danificar patrimônio, pichações, quebra de equipamentos</li>
+                    <li><strong>Uso Inadequado de Eletrônicos:</strong> Celular ou dispositivos de forma incorreta durante as aulas</li>
+                </ul>
+            </div>
+
+            <div class="important-note">
+                <strong>Por que essas regras existem?</strong><br>
+                Não é para "chatear" ninguém! Essas regras garantem um ambiente seguro, respeitoso e adequado para o aprendizado de todos. É sobre criar um lugar onde todo mundo se sinta bem! 😊
+            </div>
+
+            <div class="card" style="border-left-color: #FF6B6B;">
+                <h4>🤔 Exemplos Práticos</h4>
+                <ul style="color: #666;">
+                    <li><strong>Celular na aula:</strong> Usar para jogos, redes sociais ou conversas pode atrapalhar seu aprendizado</li>
+                    <li><strong>Bullying:</strong> Apelidos maldosos, exclusão proposital, ameaças</li>
+                    <li><strong>Vandalismo:</strong> Escrever nas mesas, quebrar cadeiras, danificar computadores</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Página 5: Penalidades -->
+        <div class="page" id="page5">
+            <div class="chapter-title">Atenção às Penalidades ⚠️</div>
+            <div class="intro-text">
+                Se você descumprir alguma regra, existem consequências. Vamos entender como funciona:
+            </div>
+
+            <div class="penalties-section">
+                <h3 style="text-align: center; margin-bottom: 2rem; color: #2c3e50;">📊 Tipos de Penalidades</h3>
+                
+                <div class="penalty-item">
+                    <div style="display: flex; align-items: center;">
+                        <span class="penalty-number">1</span>
+                        <div>
+                            <h4>📝 Advertência</h4>
+                            <p>Um aviso oficial por escrito. É como um "cartão amarelo" - serve para você refletir e corrigir o comportamento.</p>
+                            <small style="color: #666;"><strong>Quando acontece:</strong> Primeira vez ou infrações leves</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="penalty-item">
+                    <div style="display: flex; align-items: center;">
+                        <span class="penalty-number">2</span>
+                        <div>
+                            <h4>⏸️ Suspensão</h4>
+                            <p>Ficar afastado das aulas por até 15 dias. Você perde conteúdo e atividades importantes!</p>
+                            <small style="color: #666;"><strong>Quando acontece:</strong> Infrações graves ou reincidência</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="penalty-item">
+                    <div style="display: flex; align-items: center;">
+                        <span class="penalty-number">3</span>
+                        <div>
+                            <h4>❌ Desligamento</h4>
+                            <p>Perda da matrícula na escola. É a penalidade mais séria - você perde sua vaga no IFG!</p>
+                            <small style="color: #666;"><strong>Quando acontece:</strong> Infrações muito graves ou várias reincidências</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <h3>💭 Reflexão Importante</h3>
+                <p>Lembre-se: essas penalidades não existem para "punir" você, mas para manter um ambiente bom para todos. A melhor estratégia é sempre <strong>prevenir</strong> problemas seguindo as regras! 🛡️</p>
+            </div>
+        </div>
+
+        <!-- Página 6: Processo Disciplinar -->
+        <div class="page" id="page6">
+            <div class="chapter-title">Como Funciona o Processo Disciplinar ⚖️</div>
+            <div class="intro-text">
+                Se você for acusado de algo, existe um processo justo que deve ser seguido. Você tem o direito de se defender!
+            </div>
+
+            <div class="process-steps">
+                <h3 style="text-align: center; margin-bottom: 2rem; color: #2c3e50;">📋 Etapas do Processo</h3>
+                
+                <div class="step">
+                    <span class="step-number">1</span>
+                    <div>
+                        <h4>📄 Relatório da Situação</h4>
+                        <p>Quando algo acontece, é feito um relatório detalhado sobre a situação, com testemunhas e evidências.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <span class="step-number">2</span>
+                    <div>
+                        <h4>👂 Você Será Ouvido</h4>
+                        <p>Você terá a chance de contar sua versão dos fatos. É seu direito de defesa - use-o!</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <span class="step-number">3</span>
+                    <div>
+                        <h4>🛡️ Direito de Defesa</h4>
+                        <p>Você pode apresentar provas, chamar testemunhas e explicar sua versão da história.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <span class="step-number">4</span>
+                    <div>
+                        <h4>👥 Decisão da Comissão</h4>
+                        <p>Uma comissão analisa tudo e decide se houve infração e qual será a penalidade (se houver).</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="important-note">
+                <strong>Seus direitos durante o processo:</strong><br>
+                ✓ Ser ouvido e respeitado<br>
+                ✓ Apresentar sua defesa<br>
+                ✓ Ter acesso aos documentos<br>
+                ✓ Ser tratado com dignidade<br>
+                ✓ Recorrer da decisão se necessário
+            </div>
+
+            <div class="card" style="border-left-color: #4ECDC4;">
+                <h4>💡 Dica Importante</h4>
+                <p>Se você estiver enfrentando um processo disciplinar, procure ajuda da coordenação pedagógica ou de um professor de confiança. Eles podem te orientar sobre seus direitos e como se defender adequadamente.</p>
+            </div>
+        </div>
+
+        <!-- Página 7: Disposições Gerais -->
+        <div class="page" id="page7">
+            <div class="chapter-title">Capítulo VII - Disposições Gerais 📜</div>
+            <div class="intro-text">
+                Algumas informações finais importantes sobre este regulamento:
+            </div>
+
+            <div class="final-section">
+                <h3>⚖️ Validade do Regulamento</h3>
+                <p>Este regulamento entra em vigor a partir da sua publicação oficial e se aplica a todos os estudantes do IFG.</p>
+            </div>
+
+            <div class="card">
+                <h4>❓ E se surgir algo não previsto?</h4>
+                <p>Qualquer situação que não esteja clara neste manual será analisada pelo <strong>Conselho de Ensino, Pesquisa e Extensão do IFG</strong>. Eles são os responsáveis por interpretar e complementar as regras quando necessário.</p>
+            </div>
+
+            <div class="important-note">
+                <strong>Importante saber:</strong><br>
+                O regulamento pode ser atualizado quando necessário. Fique atento aos comunicados oficiais da escola para estar sempre informado sobre mudanças!
+            </div>
+
+            <div class="objective-box">
+                <h3>🎯 Mensagem Final</h3>
+                <p>Agora você conhece seus direitos, responsabilidades e as consequências de suas ações. Use esse conhecimento para fazer da sua experiência no IFG algo incrível! Lembre-se: estamos aqui para te apoiar em sua jornada educacional. 🌟</p>
+            </div>
+
+            <div class="card" style="text-align: center; background: linear-gradient(135deg, #667eea, #764ba2); color: white;">
+                <h4 style="color: white;">📞 Precisa de Ajuda?</h4>
+                <p>Se você tiver dúvidas sobre qualquer ponto deste manual, não hesite em procurar:</p>
+                <ul style="text-align: left; color: rgba(255,255,255,0.9);">
+                    <li>Coordenação pedagógica</li>
+                    <li>Professores</li>
+                    <li>Direção da escola</li>
+                    <li>Serviço de assistência estudantil</li>
+                </ul>
+                <p style="margin-top: 1rem;"><strong>Estamos aqui para te ajudar! 🤝</strong></p>
+            </div>
+        
