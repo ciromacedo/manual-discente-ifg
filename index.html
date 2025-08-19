@@ -3,10 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manual do Estudante - IFG</title>
+    <title>Manual do Estudante - IFG Campus Cidade de Goiás</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-        
         * {
             margin: 0;
             padding: 0;
@@ -14,843 +12,850 @@
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
-            line-height: 1.6;
-            color: #2c3e50;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1d5731 0%, #2d8b47 50%, #1d5731 100%);
             min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #333;
         }
 
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
+        .slideshow-container {
+            position: relative;
+            max-width: 900px;
+            margin: auto;
             background: white;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
-            border-radius: 15px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             overflow: hidden;
+            border: 3px solid #2d8b47;
         }
 
-        .header {
-            background: linear-gradient(135deg, #4CAF50, #45a049);
-            color: white;
-            padding: 2rem;
+        .slide {
+            display: none;
+            padding: 60px 50px;
+            min-height: 600px;
             text-align: center;
             position: relative;
-            overflow: hidden;
+            background: white;
         }
 
-        .header::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: repeating-linear-gradient(
-                45deg,
-                transparent,
-                transparent 10px,
-                rgba(255,255,255,0.1) 10px,
-                rgba(255,255,255,0.1) 20px
-            );
-            animation: slide 20s linear infinite;
-        }
-
-        @keyframes slide {
-            0% { transform: translateX(-50px) translateY(-50px); }
-            100% { transform: translateX(0) translateY(0); }
-        }
-
-        .header h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .header .subtitle {
-            font-size: 1.2rem;
-            font-weight: 300;
-            opacity: 0.9;
-            position: relative;
-            z-index: 1;
-        }
-
-        .page {
-            padding: 2rem;
-            min-height: 500px;
-            display: none;
-            animation: fadeIn 0.5s ease-in;
-        }
-
-        .page.active {
+        .slide.active {
             display: block;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        .slide h1 {
+            color: #1d5731;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            font-weight: bold;
         }
 
-        .chapter-title {
-            font-size: 2rem;
+        .slide h2 {
+            color: #e74c3c;
+            font-size: 2em;
+            margin-bottom: 25px;
+            font-weight: bold;
+        }
+
+        .slide h3 {
+            color: #2d8b47;
+            font-size: 1.5em;
+            margin-bottom: 20px;
             font-weight: 600;
-            color: #2c3e50;
-            margin-bottom: 1rem;
-            padding-left: 20px;
-            position: relative;
         }
 
-        .chapter-title::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 5px;
-            height: 40px;
-            background: linear-gradient(135deg, #FF6B6B, #4ECDC4);
-            border-radius: 3px;
+        .slide p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            text-align: left;
+            color: #333;
         }
 
-        .intro-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #555;
-            background: #f8f9ff;
-            padding: 1.5rem;
-            border-radius: 10px;
-            border-left: 4px solid #4ECDC4;
-            margin-bottom: 2rem;
+        .slide ul {
+            text-align: left;
+            margin: 20px 0;
         }
 
-        .objective-box {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            padding: 2rem;
+        .slide li {
+            margin: 10px 0;
+            font-size: 1.1em;
+            line-height: 1.5;
+            color: #333;
+        }
+
+        .logo {
+            width: 100px;
+            height: auto;
+            margin: 20px 0;
+        }
+
+        .logo-placeholder {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #2d8b47 0%, #1d5731 100%);
             border-radius: 15px;
-            text-align: center;
-            margin: 2rem 0;
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+            margin: 20px auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            position: relative;
+            box-shadow: 0 8px 25px rgba(45, 139, 71, 0.3);
         }
 
-        .objective-box h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
+        .logo-placeholder::before {
+            content: '';
+            width: 15px;
+            height: 15px;
+            background: #e74c3c;
+            border-radius: 50%;
+            position: absolute;
+            top: 15px;
+            left: 20px;
         }
 
-        .rights-grid, .responsibilities-grid {
+        .logo-placeholder .squares {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1rem;
-            margin: 2rem 0;
+            grid-template-columns: repeat(3, 15px);
+            gap: 3px;
+            margin: 10px 0;
         }
 
-        .card {
-            background: white;
-            border-radius: 12px;
-            padding: 1.5rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-            border: 1px solid #e3f2fd;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-        }
-
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, #FF6B6B, #4ECDC4, #45B7D1, #96CEB4);
-        }
-
-        .card h4 {
-            color: #2c3e50;
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
-            font-weight: 600;
-        }
-
-        .card ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .card li {
-            padding: 0.5rem 0;
-            padding-left: 1.5rem;
-            position: relative;
-            color: #555;
-        }
-
-        .card li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: #4ECDC4;
-            font-weight: bold;
-        }
-
-        .warning-box {
-            background: linear-gradient(135deg, #FF6B6B, #FF5722);
-            color: white;
-            padding: 2rem;
-            border-radius: 15px;
-            margin: 2rem 0;
-            text-align: center;
-            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.3);
-        }
-
-        .warning-box h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-        }
-
-        .prohibited-list {
-            background: #fff3f3;
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin: 1rem 0;
-            border-left: 4px solid #FF6B6B;
-        }
-
-        .prohibited-list h4 {
-            color: #d32f2f;
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
-        }
-
-        .prohibited-list ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .prohibited-list li {
-            padding: 0.8rem 0;
-            padding-left: 2rem;
-            position: relative;
-            color: #666;
-            border-bottom: 1px solid #ffebee;
-        }
-
-        .prohibited-list li:last-child {
-            border-bottom: none;
-        }
-
-        .prohibited-list li::before {
-            content: '⚠️';
-            position: absolute;
-            left: 0;
-            top: 0.8rem;
-        }
-
-        .penalties-section {
-            background: #f8f9fa;
-            border-radius: 15px;
-            padding: 2rem;
-            margin: 2rem 0;
-            border: 2px solid #e9ecef;
-        }
-
-        .penalty-item {
-            background: white;
-            border-radius: 10px;
-            padding: 1.5rem;
-            margin: 1rem 0;
-            border-left: 5px solid #FF6B6B;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-        }
-
-        .penalty-number {
-            background: #FF6B6B;
-            color: white;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            margin-right: 1rem;
-        }
-
-        .process-steps {
-            background: #e8f5e8;
-            border-radius: 12px;
-            padding: 2rem;
-            margin: 2rem 0;
-        }
-
-        .step {
-            display: flex;
-            align-items: center;
-            margin: 1rem 0;
-            padding: 1rem;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-        }
-
-        .step-number {
-            background: linear-gradient(135deg, #4ECDC4, #44A08D);
-            color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            margin-right: 1rem;
-            flex-shrink: 0;
-        }
-
-        .navigation {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.5rem 2rem;
-            background: #f8f9fa;
-            border-top: 1px solid #dee2e6;
+        .logo-placeholder .square {
+            width: 15px;
+            height: 15px;
+            background: #2d8b47;
+            border-radius: 2px;
         }
 
         .nav-button {
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(29, 87, 49, 0.9);
             color: white;
             border: none;
-            padding: 0.8rem 1.5rem;
-            border-radius: 25px;
+            padding: 15px 20px;
+            font-size: 24px;
             cursor: pointer;
-            font-weight: 500;
+            border-radius: 50%;
             transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            z-index: 10;
+            box-shadow: 0 4px 15px rgba(29, 87, 49, 0.3);
         }
 
         .nav-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            background: rgba(29, 87, 49, 1);
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 6px 20px rgba(29, 87, 49, 0.4);
         }
 
-        .nav-button:disabled {
-            background: #ccc;
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
+        .prev {
+            left: 20px;
         }
 
-        .page-indicator {
-            display: flex;
-            gap: 0.5rem;
-            align-items: center;
+        .next {
+            right: 20px;
         }
 
-        .dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: #dee2e6;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .dot.active {
-            background: #667eea;
-            transform: scale(1.2);
-        }
-
-        .highlight {
-            background: linear-gradient(120deg, #a8e6cf 0%, #dcedc1 100%);
-            padding: 0.2rem 0.5rem;
-            border-radius: 4px;
-            font-weight: 500;
-        }
-
-        .important-note {
-            background: #fff8e1;
-            border: 1px solid #ffcc02;
-            border-radius: 8px;
-            padding: 1rem;
-            margin: 1rem 0;
-            position: relative;
-        }
-
-        .important-note::before {
-            content: '💡';
+        .slide-counter {
             position: absolute;
-            top: -10px;
-            left: 15px;
-            background: #fff8e1;
-            padding: 0 5px;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(29, 87, 49, 0.9);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            box-shadow: 0 4px 15px rgba(29, 87, 49, 0.3);
         }
 
-        .final-section {
-            background: linear-gradient(135deg, #667eea, #764ba2);
+        .management-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .management-item {
+            background: linear-gradient(135deg, #f8fff8 0%, #e8f5e8 100%);
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 5px solid #2d8b47;
+            box-shadow: 0 4px 15px rgba(45, 139, 71, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .management-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(45, 139, 71, 0.2);
+        }
+
+        .management-item h4 {
+            color: #1d5731;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, #1d5731 0%, #2d8b47 100%);
             color: white;
-            padding: 2rem;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            box-shadow: 0 8px 25px rgba(29, 87, 49, 0.3);
             text-align: center;
-            border-radius: 12px;
-            margin: 2rem 0;
+        }
+
+        .contact-info p {
+            text-align: center;
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #e8f5e8 0%, #d4edda 100%);
+            border: 3px solid #2d8b47;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            box-shadow: 0 6px 20px rgba(45, 139, 71, 0.15);
+        }
+
+        .highlight-box h3 {
+            color: #1d5731;
+            margin-bottom: 15px;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%);
+            border: 3px solid #ff9800;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            box-shadow: 0 6px 20px rgba(255, 152, 0, 0.15);
+        }
+
+        .error-box {
+            background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
+            border: 3px solid #e74c3c;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            box-shadow: 0 6px 20px rgba(231, 76, 60, 0.15);
+        }
+
+        .center-text {
+            text-align: center;
+        }
+
+        .qr-placeholder {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #1d5731 0%, #2d8b47 100%);
+            margin: 15px auto;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+            box-shadow: 0 6px 20px rgba(29, 87, 49, 0.3);
+        }
+
+        .header-decoration {
+            width: 100%;
+            height: 8px;
+            background: linear-gradient(90deg, #e74c3c 0%, #ff9800 25%, #2d8b47 50%, #ff9800 75%, #e74c3c 100%);
+            margin-bottom: 30px;
+            border-radius: 4px;
+        }
+
+        .if-logo-recreation {
+            width: 150px;
+            height: 150px;
+            margin: 20px auto;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .if-logo-recreation .logo-bg {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #2d8b47 0%, #1d5731 100%);
+            border-radius: 20px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(29, 87, 49, 0.4);
+        }
+
+        .if-logo-recreation .red-dot {
+            width: 20px;
+            height: 20px;
+            background: #e74c3c;
+            border-radius: 50%;
+            position: absolute;
+            top: 20px;
+            left: 25px;
+        }
+
+        .if-logo-recreation .green-squares {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            display: grid;
+            grid-template-columns: repeat(4, 18px);
+            gap: 4px;
+        }
+
+        .if-logo-recreation .green-square {
+            width: 18px;
+            height: 18px;
+            background: #2d8b47;
+            border-radius: 3px;
+        }
+
+        .if-logo-recreation .institute-text {
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #1d5731;
+            font-weight: bold;
+            font-size: 16px;
+            text-align: center;
+            white-space: nowrap;
         }
 
         @media (max-width: 768px) {
-            .container {
-                margin: 10px;
-                border-radius: 10px;
+            .slide {
+                padding: 40px 30px;
+                min-height: 500px;
             }
-            
-            .header {
-                padding: 1.5rem;
+
+            .slide h1 {
+                font-size: 2em;
             }
-            
-            .header h1 {
-                font-size: 2rem;
+
+            .slide h2 {
+                font-size: 1.5em;
             }
-            
-            .page {
-                padding: 1.5rem;
-            }
-            
-            .rights-grid, .responsibilities-grid {
+
+            .management-grid {
                 grid-template-columns: 1fr;
             }
-            
-            .navigation {
-                padding: 1rem;
-                flex-direction: column;
-                gap: 1rem;
+
+            .if-logo-recreation {
+                width: 120px;
+                height: 120px;
             }
+
+            .if-logo-recreation .institute-text {
+                font-size: 14px;
+            }
+        }
+
+        .slide.slide-cover {
+            background: linear-gradient(135deg, #1d5731 0%, #2d8b47 50%, #1d5731 100%);
+            color: white;
+        }
+
+        .slide.slide-cover h1,
+        .slide.slide-cover h2,
+        .slide.slide-cover h3,
+        .slide.slide-cover p {
+            color: white;
+            text-align: center;
+        }
+
+        .slide.slide-final {
+            background: linear-gradient(135deg, #1d5731 0%, #2d8b47 50%, #1d5731 100%);
+            color: white;
+        }
+
+        .slide.slide-final h1,
+        .slide.slide-final p {
+            color: white;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>📚 Manual do Estudante</h1>
-            <div class="subtitle">Instituto Federal de Goiás - IFG</div>
+    <div class="slideshow-container">
+        <!-- Slide 1: Capa -->
+        <div class="slide slide-cover active">
+            <div class="header-decoration"></div>
+            <div class="if-logo-recreation">
+                <div class="logo-bg">
+                    <div class="red-dot"></div>
+                    <div class="green-squares">
+                        <div class="green-square"></div>
+                        <div class="green-square"></div>
+                        <div class="green-square"></div>
+                        <div class="green-square"></div>
+                        <div class="green-square"></div>
+                        <div class="green-square"></div>
+                        <div class="green-square"></div>
+                        <div class="green-square"></div>
+                        <div class="green-square"></div>
+                        <div class="green-square"></div>
+                        <div class="green-square"></div>
+                        <div class="green-square"></div>
+                    </div>
+                </div>
+                <div class="institute-text">INSTITUTO FEDERAL</div>
+            </div>
+            <h1>Manual do Estudante</h1>
+            <h2>Ensino Médio</h2>
+            <h3>2025</h3>
+            <p class="center-text"><strong>Goiás<br>
+            Câmpus Cidade de Goiás</strong></p>
         </div>
 
-        <!-- Página 1: Introdução e Objetivos -->
-        <div class="page active" id="page1">
-            <div class="chapter-title">Bem-vindo ao IFG! 🎓</div>
-            <div class="intro-text">
-                <strong>Ei, estudante!</strong> Este manual foi feito especialmente para você que faz parte da família IFG. 
-                Aqui você vai descobrir seus <span class="highlight">direitos</span>, entender suas <span class="highlight">responsabilidades</span> 
-                e saber exatamente o que pode acontecer se algo sair do planejado. 
-                <br><br>
-                Não se preocupe - vamos explicar tudo de um jeito fácil e direto, sem complicação! 😊
-            </div>
-
-            <div class="objective-box">
-                <h3>🎯 Capítulo I - Nossos Objetivos</h3>
-                <p>O IFG tem uma missão super importante: garantir que todos os alunos tenham acesso a uma educação pública, gratuita e de qualidade. Queremos que você saiba exatamente quais são seus direitos e deveres para que sua jornada aqui seja tranquila e cheia de aprendizado!</p>
-            </div>
-
-            <div class="important-note">
-                <strong>Por que este manual é importante?</strong><br>
-                Conhecendo as regras, você evita problemas e aproveita melhor todas as oportunidades que o IFG oferece. É como ter um mapa para não se perder na jornada! 🗺️
-            </div>
-
-        <!-- Navegação entre páginas -->
-        <div class="navigation">
-            <button class="nav-button" id="prevBtn" onclick="changePage(-1)">
-                ← Anterior
-            </button>
+        <!-- Slide 2: Bem-vindo -->
+        <div class="slide">
+            <div class="header-decoration"></div>
+            <h2>BEM VINDO(A)!</h2>
+            <p>Caro estudante, neste manual você encontrará informações básicas que o auxiliarão e orientarão em seu dia a dia no Campus Cidade de Goiás.</p>
             
-            <div class="page-indicator">
-                <span class="dot active" onclick="currentPage(1)"></span>
-                <span class="dot" onclick="currentPage(2)"></span>
-                <span class="dot" onclick="currentPage(3)"></span>
-                <span class="dot" onclick="currentPage(4)"></span>
-                <span class="dot" onclick="currentPage(5)"></span>
-                <span class="dot" onclick="currentPage(6)"></span>
-                <span class="dot" onclick="currentPage(7)"></span>
+            <div class="highlight-box">
+                <p><strong>Da equipe da Coordenação Pedagógica e Coordenação Acadêmica</strong></p>
             </div>
             
-            <button class="nav-button" id="nextBtn" onclick="changePage(1)">
-                Próxima →
-            </button>
+            <div class="logo-placeholder">
+                <div class="squares">
+                    <div class="square"></div>
+                    <div class="square"></div>
+                    <div class="square"></div>
+                    <div class="square"></div>
+                    <div class="square"></div>
+                    <div class="square"></div>
+                    <div class="square"></div>
+                    <div class="square"></div>
+                    <div class="square"></div>
+                </div>
+                <strong>IFG</strong>
+            </div>
+        </div>
+
+        <!-- Slide 3: A Gestão -->
+        <div class="slide">
+            <div class="header-decoration"></div>
+            <h2>A Gestão</h2>
+            <div class="management-grid">
+                <div class="management-item">
+                    <h4>Coordenação Pedagógica (CAPD)</h4>
+                    <p>A CAPD conecta gestão e discentes para garantir a implementação das políticas educacionais.</p>
+                </div>
+                <div class="management-item">
+                    <h4>Coordenação Acadêmica</h4>
+                    <p>A Coordenação Acadêmica apoia docentes, gerencia o calendário acadêmico e fortalece a conexão entre a instituição e a comunidade escolar.</p>
+                </div>
+                <div class="management-item">
+                    <h4>Assistência Estudantil (CAE)</h4>
+                    <p>A CAE garante acesso, permanência e sucesso acadêmico, promovendo inclusão e cidadania.</p>
+                </div>
+                <div class="management-item">
+                    <h4>Apoio Estágio (COSIE)</h4>
+                    <p>A COSIE gerencia estágios, estabelece parcerias e facilita a inserção dos alunos no mercado de trabalho.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Mais Coordenações -->
+        <div class="slide">
+            <div class="header-decoration"></div>
+            <h2>Mais Coordenações</h2>
+            <div class="management-grid">
+                <div class="management-item">
+                    <h4>Biblioteca</h4>
+                    <p>As bibliotecas do IFG oferecem suporte acadêmico, acesso a acervos e recursos informacionais para ensino, pesquisa e extensão.</p>
+                </div>
+                <div class="management-item">
+                    <h4>CORAE</h4>
+                    <p>A CORAE gerencia registros acadêmicos, matrículas, certificações e emissão de documentos escolares.</p>
+                </div>
+                <div class="management-item">
+                    <h4>CAAAE</h4>
+                    <p>A CAAAE gerencia processos acadêmicos e administrativos, focando no suporte ao ensino e na organização institucional.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Uso do Celular -->
+        <div class="slide">
+            <div class="header-decoration"></div>
+            <h2>Uso do Celular</h2>
+            <div class="error-box">
+                <p><strong>Conforme a Lei nº 15.100/2025</strong>, o uso de celulares e outros dispositivos eletrônicos portáteis está proibido durante as aulas, recreios e intervalos nas escolas de educação básica, incluindo o IFG.</p>
+            </div>
+            <h3>O que você precisa saber:</h3>
+            <ul>
+                <li>O uso de celulares é permitido apenas para fins pedagógicos, com autorização do professor</li>
+                <li>Em situações de emergência, o celular pode ser utilizado</li>
+                <li>Alunos com necessidades especiais podem utilizar o dispositivo quando for essencial para a acessibilidade</li>
+            </ul>
+            <div class="highlight-box">
+                <h3>Por que essa medida?</h3>
+                <ul>
+                    <li>Aumentar a atenção e o aproveitamento das aulas</li>
+                    <li>Diminuir distrações e dependência digital</li>
+                    <li>Incentivar a comunicação entre colegas e professores</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 6: Horários -->
+        <div class="slide">
+            <div class="header-decoration"></div>
+            <h2>De olho no horário!</h2>
+            <p>Você está em uma escola de turno integral, então, atente-se aos horários das aulas, início e término de cada uma.</p>
+            
+            <div class="highlight-box">
+                <h3>Horários das Aulas:</h3>
+                <p><strong>Manhã:</strong> 07h00min às 12h00min</p>
+                <p><strong>Tarde:</strong> 13h45 às 17h00min</p>
+            </div>
+
+            <p>Verifique seu horário no mural e acompanhe sempre, pois podem ocorrer alterações.</p>
+
+            <div class="warning-box">
+                <h3>Tolerância para entrada com atraso na 1ª aula:</h3>
+                <p>A tolerância é de 15min. Após este tempo, é autorizada a entrada em sala, porém caso o professor já tiver efetuado a chamada, o aluno ficará com falta.</p>
+            </div>
+
+            <p><strong>É dever do estudante participar das atividades escolares com assiduidade e pontualidade.</strong></p>
+        </div>
+
+        <!-- Slide 7: Frequência -->
+        <div class="slide">
+            <div class="header-decoration"></div>
+            <h2>Frequência</h2>
+            <div class="highlight-box">
+                <h3>A frequência mínima para a aprovação em cada disciplina é de 75%.</h3>
+            </div>
+            
+            <p>Estar no Campus todo dia e frequentar todas as aulas é necessário para seu aprendizado.</p>
+            
+            <div class="error-box">
+                <p><strong>Fiquem atentos para não reprovarem por Falta!</strong></p>
+            </div>
+
+            <h3>Aprovação/Reprovação</h3>
+            <p>O(a) aluno(a) será considerado(a) Aprovado(a) quando obtiver nota igual ou superior a 6,0 e frequência de 75%, na carga horária do curso.</p>
+            
+            <p>É assegurado ao estudante ter conhecimento da sua nota e identificar suas dificuldades e potencialidades.</p>
+
+            <h3>É direito do estudante:</h3>
+            <ul>
+                <li>Solicitar a revisão da prova, caso discorde da sua nota</li>
+                <li>Fazer a 2º chamada, caso tenha perdido a prova</li>
+            </ul>
+        </div>
+
+        <!-- Slide 8: Justificativa de Faltas -->
+        <div class="slide">
+            <div class="header-decoration"></div>
+            <h2>Justificativa de Faltas</h2>
+            <h3>O que é a justificativa de falta?</h3>
+            <p>A falta justificada é o ato de apresentar o motivo legal que impediu o estudante de comparecer à atividade acadêmica regular.</p>
+
+            <div class="warning-box">
+                <p><strong>ATENÇÃO!</strong> A justificativa não anula o registro da(s) falta(s) no Diário de Classe, assegurando apenas a reposição das atividades avaliativas.</p>
+            </div>
+
+            <p>Mesmo com a falta justificada o estudante ainda pode reprovar por faltas. Por isso é importante se ausentarem das atividades acadêmicas quando realmente necessário.</p>
+
+            <div class="highlight-box">
+                <p><strong>Obs.:</strong> Atestados de comparecimento médicos/odontológicos e declarações laborais apenas justificam as faltas, mas não as abonam.</p>
+                <p>O abono ocorrerá apenas nos casos previstos na instrução normativa e na legislação vigente. Instrução Normativa Proen nº 08, 09 de Março de 2018.</p>
+            </div>
+        </div>
+
+        <!-- Slide 9: Atendimento -->
+        <div class="slide">
+            <div class="header-decoration"></div>
+            <h2>Atendimento</h2>
+            <p>Assistiu às aulas, estudou, mas ainda continua com dúvida sobre determinado conteúdo? Compareça aos momentos de atendimento que são disponibilizados para você!</p>
+
+            <div class="highlight-box">
+                <p>A realização do atendimento é dever dos professores e um direito do estudante, portanto, aproveite esse momento para questionar e tirar dúvidas sobre o que está estudando de modo mais próximo e diferenciado!</p>
+            </div>
+
+            <p>O atendimento acontece no Câmpus, fora do horário de aulas. Se informe acerca dos horários de cada professor e não deixe de tirar dúvidas!</p>
+        </div>
+
+        <!-- Slide 10: Atividades Complementares -->
+        <div class="slide">
+            <div class="header-decoration"></div>
+            <h2>Atividades Complementares</h2>
+            <h3>O que são as Atividades Complementares?</h3>
+            <p>Atividades Complementares são atividades extraclasse. Elas são as participações em palestras, congressos, conferências, rodas de conversa, minicursos, entre outras que os estudantes podem participar ao longo do curso. Elas são obrigatórias para a obtenção do diploma.</p>
+
+            <div class="highlight-box">
+                <h3>É obrigatório fazer?</h3>
+                <p>O estudante deve juntar os certificados de participação, e no último ano de curso abrir um processo de convalidação de hora complementares.</p>
+                <p><strong>O aluno precisa completar 120 horas para se formar.</strong></p>
+            </div>
+
+            <p><em>Resolução Nº 20, De 26 De Dezembro De 2011.</em></p>
+        </div>
+
+        <!-- Slide 11: Estágio -->
+        <div class="slide">
+            <div class="header-decoration"></div>
+            <h2>Estágio</h2>
+            <p>O estágio é uma atividade curricular que visa complementar a formação acadêmica, proporcionando ao estudante experiências práticas em sua área de estudo.</p>
+
+            <h3>O IFG oferece dois tipos de estágio:</h3>
+            <div class="management-grid">
+                <div class="management-item">
+                    <h4>Estágio Obrigatório</h4>
+                    <p>Previsto na matriz curricular do curso, é requisito indispensável para a conclusão e obtenção do diploma.</p>
+                </div>
+                <div class="management-item">
+                    <h4>Estágio Não Obrigatório</h4>
+                    <p>Atividade opcional que, embora não seja exigida para a conclusão do curso, enriquece a formação do estudante.</p>
+                </div>
+            </div>
+
+            <p><em>Resolução Nº 20, De 26 De Dezembro De 2011.</em></p>
+        </div>
+
+        <!-- Slide 12: NAPNE -->
+        <div class="slide">
+            <div class="header-decoration"></div>
+            <h2>NAPNE</h2>
+            <p>O Núcleo de Apoio às Pessoas com Necessidades Específicas (NAPNE) tem por finalidade desenvolver ações que contribuam para a promoção da inclusão escolar de pessoas com necessidades específicas (NE), de caráter permanente ou temporário, que causem dificuldades ou impedimentos no desenvolvimento acadêmico e/ou em suas relações interpessoais.</p>
+
+            <div class="logo-placeholder">
+                <div style="font-size: 40px;">♿</div>
+                <strong>NAPNE</strong>
+            </div>
+
+            <div class="contact-info">
+                <p><strong>Contato:</strong> (62) 994108788</p>
+            </div>
+        </div>
+
+        <!-- Slide 13: CAE -->
+        <div class="slide">
+            <div class="header-decoration"></div>
+            <h2>CAE - Coordenação de Assistência Estudantil</h2>
+            <p>A Coordenação de Assistência Estudantil (CAE) é responsável pelo desenvolvimento das políticas de inclusão social e de apoio ao estudante no IFG.</p>
+
+            <p>A Assistência Estudantil do Campus Cidade de Goiás oferta auxílios e bolsas com intuito de garantir a permanência do estudante na Instituição, como o Programa Auxílio Permanência, Programa Alimentação e Auxílio Emergencial.</p>
+
+            <h3>Como o estudante pode acessar esses benefícios?</h3>
+            <p>O estudante deve se inscrever nos editais publicados no início de cada ano letivo, atendendo aos critérios elencados no edital.</p>
+
+            <div class="warning-box">
+                <p>A assiduidade nas atividades acadêmicas é um requisito para continuidade nos programas de assistência estudantil. <strong>Fiquem atentos às faltas!</strong></p>
+            </div>
+
+            <div class="contact-info">
+                <p><strong>Contato:</strong> (62) 3442-0208</p>
+            </div>
+        </div>
+
+        <!-- Slide 14: Biblioteca -->
+        <div class="slide">
+            <div class="header-decoration"></div>
+            <h2>Biblioteca</h2>
+            <p>Os(as) estudantes do campus Goiás contam com uma ampla biblioteca, podendo realizar empréstimo domiciliar, consulta local e online. Além de empréstimo de livros e dvds, acesso à internet através dos laboratórios de informática e de jogos, sala de estudos em grupo e individuais.</p>
+
+            <p>A Biblioteca exerce um importante papel como centro disseminador de conhecimento e disponibiliza atendimento, não só a alunos e servidores do IFG, como à toda comunidade e região.</p>
+
+            <div class="highlight-box">
+                <h3>Normas de Uso</h3>
+                <ul>
+                    <li>Não é permitida a entrada na biblioteca com pastas, bolsas, sacolas, mochilas, fichários, capa de notebook, comida e bebida. Esses objetos devem ser deixados no guarda volumes</li>
+                    <li>Manter silêncio nas dependências da biblioteca</li>
+                    <li>Não utilizar celular ou qualquer aparelho que emita sons</li>
+                </ul>
+            </div>
+
+            <div class="contact-info">
+                <p><strong>Contato:</strong> (62) 3442-0207</p>
+            </div>
+        </div>
+
+        <!-- Slide 15: Refeitório -->
+        <div class="slide">
+            <div class="header-decoration"></div>
+            <h2>Refeitório</h2>
+            <p>O IFG Cidade de Goiás dispõe de um refeitório onde é disponibilizado mesas, cadeiras, microondas e geladeiras para que os alunos possam acondicionar e aquecer a comida trazida de casa e realizar suas refeições.</p>
+
+            <div class="highlight-box">
+                <p><strong>OBS:</strong> Todos os estudantes do ensino médio receberão um auxílio financeiro para custear a sua alimentação no período em que não houver a oferta de refeições no restaurante estudantil do IFG.</p>
+            </div>
+        </div>
+
+        <!-- Slide 16: Transporte -->
+        <div class="slide">
+            <div class="header-decoration"></div>
+            <h2>Transporte</h2>
+            <p>Atualmente o IFG em parceria com a prefeitura dispõe de um transporte que desloca os alunos até o IFG com ponto na Praça do Elivel.</p>
+
+            <div class="highlight-box">
+                <h3>Horários</h3>
+                <ul>
+                    <li><strong>06:45:</strong> praça Elivel para IFG</li>
+                    <li><strong>13:10:</strong> praça Elivel para IFG</li>
+                    <li><strong>13:20:</strong> IFG para praça Elivel</li>
+                    <li><strong>18:45:</strong> praça Elivel para IFG</li>
+                    <li><strong>22:00:</strong> IFG para praça Elivel</li>
+                </ul>
+            </div>
+
+            <div class="qr-placeholder">QR</div>
+            <p class="center-text"><strong>Link do grupo de transporte do WhatsApp</strong></p>
+            <p class="center-text"><small>https://chat.whatsapp.com/GMldtTIQ7AyGTZDoWakbbI</small></p>
+        </div>
+
+        <!-- Slide 17: Rádio Vozzes -->
+        <div class="slide">
+            <div class="header-decoration"></div>
+            <h2>Rádio Vozzes</h2>
+            <p>O IFG campus Cidade de Goiás conta com uma Rádio. A Rádio Vozzes é uma ótima forma de envolver os alunos e a comunidade em um novo canal de comunicação.</p>
+
+            <p>Os estudantes podem pedir música, participar de programas e contribuir com o conteúdo para rádio.</p>
+
+            <div class="highlight-box">
+                <p><strong>A Rádio Vozzes está sob a direção do servidor Felipe Neiva Oliveira.</strong></p>
+            </div>
+
+            <div class="qr-placeholder">📻</div>
+            <p class="center-text"><strong>https://radio.goias.ifg.edu.br/</strong></p>
+        </div>
+
+        <!-- Slide 18: NPD -->
+        <div class="slide">
+            <div class="header-decoration"></div>
+            <h2>Núcleo de Produção Digital</h2>
+            <p>O Campus Cidade de Goiás conta com um Núcleo de Produção Digital - NPD.</p>
+
+            <p>Os NPDs visam apoiar a produção audiovisual independente, através do fornecimento de equipamentos adequados, bem como de serviços técnicos especializados, promovendo a formação e o aprimoramento profissional e artístico de técnicos e realizadores audiovisuais nas mais diversas funções.</p>
+
+            <div class="logo-placeholder">
+                <div style="font-size: 30px;">🎬</div>
+                <strong>NPD</strong>
+            </div>
+
+            <div class="highlight-box">
+                <h3>NPDflix</h3>
+                <p>O NPDflix é o serviço de streaming do curso de cinema do IFG. Acompanhe e divulgue o trabalho dos nossos estudantes.</p>
+            </div>
+
+            <div class="qr-placeholder">QR</div>
+            <p class="center-text"><strong>https://npd.goias.ifg.edu.br/</strong></p>
+        </div>
+
+        <!-- Slide 19: Final -->
+        <div class="slide slide-final">
+            <div class="header-decoration"></div>
+            <h1>Desejamos uma trajetória de bons estudos e excelentes resultados!</h1>
+            
+            <div class="if-logo-recreation">
+                <div class="logo-bg">
+                    <div class="red-dot"></div>
+                    <div class="green-squares">
+                        <div class="green-square"></div>
+                        <div class="green-square"></div>
+                        <div class="green-square"></div>
+                        <div class="green-square"></div>
+                        <div class="green-square"></div>
+                        <div class="green-square"></div>
+                        <div class="green-square"></div>
+                        <div class="green-square"></div>
+                        <div class="green-square"></div>
+                        <div class="green-square"></div>
+                        <div class="green-square"></div>
+                        <div class="green-square"></div>
+                    </div>
+                </div>
+                <div class="institute-text" style="color: white;">INSTITUTO FEDERAL</div>
+            </div>
+            
+            <p class="center-text"><strong>Goiás<br>
+            Câmpus Cidade de Goiás</strong></p>
+        </div>
+
+        <!-- Navigation buttons -->
+        <button class="nav-button prev" onclick="changeSlide(-1)">❮</button>
+        <button class="nav-button next" onclick="changeSlide(1)">❯</button>
+
+        <!-- Slide counter -->
+        <div class="slide-counter">
+            <span id="current-slide">1</span> / <span id="total-slides">19</span>
         </div>
     </div>
 
     <script>
-        let currentPageNum = 1;
-        const totalPages = 7;
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        
+        document.getElementById('total-slides').textContent = totalSlides;
 
-        function showPage(n) {
-            const pages = document.querySelectorAll('.page');
-            const dots = document.querySelectorAll('.dot');
-            
-            // Hide all pages
-            pages.forEach(page => page.classList.remove('active'));
-            
-            // Remove active class from all dots
-            dots.forEach(dot => dot.classList.remove('active'));
-            
-            // Show current page
-            document.getElementById(`page${n}`).classList.add('active');
-            
-            // Activate current dot
-            dots[n-1].classList.add('active');
-            
-            // Update navigation buttons
-            document.getElementById('prevBtn').disabled = (n === 1);
-            document.getElementById('nextBtn').disabled = (n === totalPages);
-            
-            // Update current page number
-            currentPageNum = n;
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (n + totalSlides) % totalSlides;
+            slides[currentSlide].classList.add('active');
+            document.getElementById('current-slide').textContent = currentSlide + 1;
         }
 
-        function changePage(direction) {
-            const newPage = currentPageNum + direction;
-            if (newPage >= 1 && newPage <= totalPages) {
-                showPage(newPage);
-            }
+        function changeSlide(direction) {
+            showSlide(currentSlide + direction);
         }
-
-        function currentPage(n) {
-            showPage(n);
-        }
-
-        // Initialize
-        showPage(1);
 
         // Keyboard navigation
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'ArrowLeft') {
-                changePage(-1);
-            } else if (event.key === 'ArrowRight') {
-                changePage(1);
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowLeft') {
+                changeSlide(-1);
+            } else if (e.key === 'ArrowRight') {
+                changeSlide(1);
             }
         });
 
-        // Print functionality
-        function printManual() {
-            window.print();
+        // Touch/swipe support for mobile
+        let startX = 0;
+        let endX = 0;
+
+        document.addEventListener('touchstart', function(e) {
+            startX = e.touches[0].clientX;
+        });
+
+        document.addEventListener('touchend', function(e) {
+            endX = e.changedTouches[0].clientX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = startX - endX;
+            
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    changeSlide(1); // Swipe left - next slide
+                } else {
+                    changeSlide(-1); // Swipe right - previous slide
+                }
+            }
         }
 
-        // Add print styles
-        const printStyles = `
-            @media print {
-                body { background: white !important; }
-                .container { box-shadow: none !important; margin: 0 !important; }
-                .navigation { display: none !important; }
-                .page { display: block !important; page-break-after: always; }
-                .page:last-child { page-break-after: auto; }
-                .header { background: #4CAF50 !important; -webkit-print-color-adjust: exact; }
-                .objective-box, .warning-box, .final-section { -webkit-print-color-adjust: exact; }
-                .card::before { -webkit-print-color-adjust: exact; }
-            }
-        `;
-        
-        const styleSheet = document.createElement('style');
-        styleSheet.textContent = printStyles;
-        document.head.appendChild(styleSheet);
+        // Auto-advance slides (optional)
+        // setInterval(() => changeSlide(1), 10000); // Uncomment to auto-advance every 10 seconds
     </script>
 </body>
-</html>    </div>
+</html>
 
-        <!-- Página 2: Seus Direitos -->
-        <div class="page" id="page2">
-            <div class="chapter-title">Capítulo III - Seus Direitos ⚖️</div>
-            <div class="intro-text">
-                Como estudante do IFG, você tem direitos garantidos! Vamos conhecê-los:
-            </div>
-
-            <div class="rights-grid">
-                <div class="card">
-                    <h4>📖 Educação de Qualidade</h4>
-                    <ul>
-                        <li>Aulas gratuitas e bem estruturadas</li>
-                        <li>Professores qualificados</li>
-                        <li>Material didático adequado</li>
-                        <li>Laboratórios e equipamentos modernos</li>
-                    </ul>
-                </div>
-
-                <div class="card">
-                    <h4>🤝 Igualdade e Participação</h4>
-                    <ul>
-                        <li>Participar de projetos e eventos</li>
-                        <li>Usar todos os espaços da escola</li>
-                        <li>Igualdade de oportunidades</li>
-                        <li>Livre expressão respeitosa</li>
-                    </ul>
-                </div>
-
-                <div class="card">
-                    <h4>🆘 Apoio e Suporte</h4>
-                    <ul>
-                        <li>Ajuda de professores e coordenadores</li>
-                        <li>Apoio com material escolar</li>
-                        <li>Assistência financeira quando necessário</li>
-                        <li>Orientação pedagógica</li>
-                    </ul>
-                </div>
-
-                <div class="card">
-                    <h4>🗣️ Voz e Defesa</h4>
-                    <ul>
-                        <li>Ser ouvido em processos acadêmicos</li>
-                        <li>Direito de defesa</li>
-                        <li>Organizar-se com outros alunos</li>
-                        <li>Participar de decisões que te afetam</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="important-note">
-                <strong>Lembre-se:</strong> Seus direitos são importantes, mas vêm acompanhados de responsabilidades. Um equilibra o outro! ⚖️
-            </div>
-        </div>
-
-        <!-- Página 3: Suas Responsabilidades -->
-        <div class="page" id="page3">
-            <div class="chapter-title">Suas Responsabilidades 📋</div>
-            <div class="intro-text">
-                Com direitos vêm responsabilidades! Veja o que esperamos de você:
-            </div>
-
-            <div class="responsibilities-grid">
-                <div class="card">
-                    <h4>⏰ Pontualidade e Presença</h4>
-                    <ul>
-                        <li>Comparecer às aulas regularmente</li>
-                        <li>Chegar no horário</li>
-                        <li>Cumprir prazos de trabalhos</li>
-                        <li>Participar das atividades</li>
-                    </ul>
-                </div>
-
-                <div class="card">
-                    <h4>🏫 Cuidado com o Patrimônio</h4>
-                    <ul>
-                        <li>Preservar salas e laboratórios</li>
-                        <li>Cuidar de equipamentos</li>
-                        <li>Manter limpo o ambiente</li>
-                        <li>Usar materiais com responsabilidade</li>
-                    </ul>
-                </div>
-
-                <div class="card">
-                    <h4>📄 Documentação</h4>
-                    <ul>
-                        <li>Portar identificação estudantil</li>
-                        <li>Manter dados atualizados</li>
-                        <li>Cumprir procedimentos acadêmicos</li>
-                        <li>Entregar documentos no prazo</li>
-                    </ul>
-                </div>
-
-                <div class="card">
-                    <h4>🤝 Respeito e Convivência</h4>
-                    <ul>
-                        <li>Tratar bem colegas e professores</li>
-                        <li>Seguir regras de convivência</li>
-                        <li>Participar positivamente</li>
-                        <li>Resolver conflitos com diálogo</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="important-note">
-                <strong>Dica importante:</strong> Cumprir suas responsabilidades não é só uma obrigação - é a melhor forma de aproveitar sua experiência no IFG! 🌟
-            </div>
-        </div>
-
-        <!-- Página 4: O que é Proibido -->
-        <div class="page" id="page4">
-            <div class="chapter-title">Capítulo IV - O que é Proibido ⛔</div>
-            
-            <div class="warning-box">
-                <h3>⚠️ Atenção Especial!</h3>
-                <p>Alguns comportamentos podem causar sérios problemas para você e para toda a comunidade escolar. Vamos entender o que deve ser evitado:</p>
-            </div>
-
-            <div class="prohibited-list">
-                <h4>🚫 Comportamentos Proibidos</h4>
-                <ul>
-                    <li><strong>Trote ou Bullying:</strong> Qualquer forma de intimidação, humilhação ou violência física/psicológica</li>
-                    <li><strong>Desrespeito:</strong> Tratar mal colegas, professores ou funcionários</li>
-                    <li><strong>Substâncias Proibidas:</strong> Portar armas, drogas ou bebidas alcoólicas</li>
-                    <li><strong>Vandalismo:</strong> Danificar patrimônio, pichações, quebra de equipamentos</li>
-                    <li><strong>Uso Inadequado de Eletrônicos:</strong> Celular ou dispositivos de forma incorreta durante as aulas</li>
-                </ul>
-            </div>
-
-            <div class="important-note">
-                <strong>Por que essas regras existem?</strong><br>
-                Não é para "chatear" ninguém! Essas regras garantem um ambiente seguro, respeitoso e adequado para o aprendizado de todos. É sobre criar um lugar onde todo mundo se sinta bem! 😊
-            </div>
-
-            <div class="card" style="border-left-color: #FF6B6B;">
-                <h4>🤔 Exemplos Práticos</h4>
-                <ul style="color: #666;">
-                    <li><strong>Celular na aula:</strong> Usar para jogos, redes sociais ou conversas pode atrapalhar seu aprendizado</li>
-                    <li><strong>Bullying:</strong> Apelidos maldosos, exclusão proposital, ameaças</li>
-                    <li><strong>Vandalismo:</strong> Escrever nas mesas, quebrar cadeiras, danificar computadores</li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Página 5: Penalidades -->
-        <div class="page" id="page5">
-            <div class="chapter-title">Atenção às Penalidades ⚠️</div>
-            <div class="intro-text">
-                Se você descumprir alguma regra, existem consequências. Vamos entender como funciona:
-            </div>
-
-            <div class="penalties-section">
-                <h3 style="text-align: center; margin-bottom: 2rem; color: #2c3e50;">📊 Tipos de Penalidades</h3>
-                
-                <div class="penalty-item">
-                    <div style="display: flex; align-items: center;">
-                        <span class="penalty-number">1</span>
-                        <div>
-                            <h4>📝 Advertência</h4>
-                            <p>Um aviso oficial por escrito. É como um "cartão amarelo" - serve para você refletir e corrigir o comportamento.</p>
-                            <small style="color: #666;"><strong>Quando acontece:</strong> Primeira vez ou infrações leves</small>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="penalty-item">
-                    <div style="display: flex; align-items: center;">
-                        <span class="penalty-number">2</span>
-                        <div>
-                            <h4>⏸️ Suspensão</h4>
-                            <p>Ficar afastado das aulas por até 15 dias. Você perde conteúdo e atividades importantes!</p>
-                            <small style="color: #666;"><strong>Quando acontece:</strong> Infrações graves ou reincidência</small>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="penalty-item">
-                    <div style="display: flex; align-items: center;">
-                        <span class="penalty-number">3</span>
-                        <div>
-                            <h4>❌ Desligamento</h4>
-                            <p>Perda da matrícula na escola. É a penalidade mais séria - você perde sua vaga no IFG!</p>
-                            <small style="color: #666;"><strong>Quando acontece:</strong> Infrações muito graves ou várias reincidências</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="warning-box">
-                <h3>💭 Reflexão Importante</h3>
-                <p>Lembre-se: essas penalidades não existem para "punir" você, mas para manter um ambiente bom para todos. A melhor estratégia é sempre <strong>prevenir</strong> problemas seguindo as regras! 🛡️</p>
-            </div>
-        </div>
-
-        <!-- Página 6: Processo Disciplinar -->
-        <div class="page" id="page6">
-            <div class="chapter-title">Como Funciona o Processo Disciplinar ⚖️</div>
-            <div class="intro-text">
-                Se você for acusado de algo, existe um processo justo que deve ser seguido. Você tem o direito de se defender!
-            </div>
-
-            <div class="process-steps">
-                <h3 style="text-align: center; margin-bottom: 2rem; color: #2c3e50;">📋 Etapas do Processo</h3>
-                
-                <div class="step">
-                    <span class="step-number">1</span>
-                    <div>
-                        <h4>📄 Relatório da Situação</h4>
-                        <p>Quando algo acontece, é feito um relatório detalhado sobre a situação, com testemunhas e evidências.</p>
-                    </div>
-                </div>
-
-                <div class="step">
-                    <span class="step-number">2</span>
-                    <div>
-                        <h4>👂 Você Será Ouvido</h4>
-                        <p>Você terá a chance de contar sua versão dos fatos. É seu direito de defesa - use-o!</p>
-                    </div>
-                </div>
-
-                <div class="step">
-                    <span class="step-number">3</span>
-                    <div>
-                        <h4>🛡️ Direito de Defesa</h4>
-                        <p>Você pode apresentar provas, chamar testemunhas e explicar sua versão da história.</p>
-                    </div>
-                </div>
-
-                <div class="step">
-                    <span class="step-number">4</span>
-                    <div>
-                        <h4>👥 Decisão da Comissão</h4>
-                        <p>Uma comissão analisa tudo e decide se houve infração e qual será a penalidade (se houver).</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="important-note">
-                <strong>Seus direitos durante o processo:</strong><br>
-                ✓ Ser ouvido e respeitado<br>
-                ✓ Apresentar sua defesa<br>
-                ✓ Ter acesso aos documentos<br>
-                ✓ Ser tratado com dignidade<br>
-                ✓ Recorrer da decisão se necessário
-            </div>
-
-            <div class="card" style="border-left-color: #4ECDC4;">
-                <h4>💡 Dica Importante</h4>
-                <p>Se você estiver enfrentando um processo disciplinar, procure ajuda da coordenação pedagógica ou de um professor de confiança. Eles podem te orientar sobre seus direitos e como se defender adequadamente.</p>
-            </div>
-        </div>
-
-        <!-- Página 7: Disposições Gerais -->
-        <div class="page" id="page7">
-            <div class="chapter-title">Capítulo VII - Disposições Gerais 📜</div>
-            <div class="intro-text">
-                Algumas informações finais importantes sobre este regulamento:
-            </div>
-
-            <div class="final-section">
-                <h3>⚖️ Validade do Regulamento</h3>
-                <p>Este regulamento entra em vigor a partir da sua publicação oficial e se aplica a todos os estudantes do IFG.</p>
-            </div>
-
-            <div class="card">
-                <h4>❓ E se surgir algo não previsto?</h4>
-                <p>Qualquer situação que não esteja clara neste manual será analisada pelo <strong>Conselho de Ensino, Pesquisa e Extensão do IFG</strong>. Eles são os responsáveis por interpretar e complementar as regras quando necessário.</p>
-            </div>
-
-            <div class="important-note">
-                <strong>Importante saber:</strong><br>
-                O regulamento pode ser atualizado quando necessário. Fique atento aos comunicados oficiais da escola para estar sempre informado sobre mudanças!
-            </div>
-
-            <div class="objective-box">
-                <h3>🎯 Mensagem Final</h3>
-                <p>Agora você conhece seus direitos, responsabilidades e as consequências de suas ações. Use esse conhecimento para fazer da sua experiência no IFG algo incrível! Lembre-se: estamos aqui para te apoiar em sua jornada educacional. 🌟</p>
-            </div>
-
-            <div class="card" style="text-align: center; background: linear-gradient(135deg, #667eea, #764ba2); color: white;">
-                <h4 style="color: white;">📞 Precisa de Ajuda?</h4>
-                <p>Se você tiver dúvidas sobre qualquer ponto deste manual, não hesite em procurar:</p>
-                <ul style="text-align: left; color: rgba(255,255,255,0.9);">
-                    <li>Coordenação pedagógica</li>
-                    <li>Professores</li>
-                    <li>Direção da escola</li>
-                    <li>Serviço de assistência estudantil</li>
-                </ul>
-                <p style="margin-top: 1rem;"><strong>Estamos aqui para te ajudar! 🤝</strong></p>
-            </div>
-        
+     
